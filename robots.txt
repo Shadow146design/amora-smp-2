@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amora-smp2.onrender.com/sitemap.xml

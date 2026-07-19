@@ -69,15 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (other !== item) {
           other.classList.remove('open');
           other.querySelector('.faq-a').style.maxHeight = null;
+          other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
         }
       });
 
       if (isOpen) {
         item.classList.remove('open');
         answer.style.maxHeight = null;
+        btn.setAttribute('aria-expanded', 'false');
       } else {
         item.classList.add('open');
         answer.style.maxHeight = answer.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
       }
     });
   });
