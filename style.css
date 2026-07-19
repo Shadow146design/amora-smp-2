@@ -686,6 +686,44 @@ a:focus-visible, button:focus-visible{
   border-color:var(--border-light);
 }
 
+.item-recipes{
+  margin-top:4px;
+  padding-top:14px;
+  border-top:1px dashed var(--border);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.recipes-title{
+  font-size:.72rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  color:var(--green-bright);
+}
+.recipe-list{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.recipe-list li{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:4px 10px;
+  font-size:.82rem;
+  padding:6px 10px;
+  background:rgba(255,255,255,.03);
+  border-radius:var(--radius-sm);
+}
+.recipe-name{ color:var(--text); font-weight:600; }
+.recipe-ing{ color:var(--muted); }
+.recipes-note{
+  font-size:.72rem;
+  color:var(--muted-2);
+  font-style:italic;
+}
+
 /* =============== FOOTER =============== */
 footer{
   background:var(--black);
