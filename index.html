@@ -110,6 +110,11 @@
       <p>Tout l'arsenal et les systèmes disponibles sur Amora SMP 2 — de quoi combattre, te défendre et explorer en style.</p>
     </div>
 
+    <div class="items-search reveal">
+      <span class="search-ic" aria-hidden="true">🔍</span>
+      <input type="search" id="itemsSearch" placeholder="Rechercher une arme, un objet..." aria-label="Rechercher un objet">
+    </div>
+
     <div class="filter-tabs reveal">
       <button class="filter-btn active" data-filter="all" type="button">Tous</button>
       <button class="filter-btn" data-filter="armes" type="button">⚔️ Armes</button>
@@ -117,6 +122,8 @@
       <button class="filter-btn" data-filter="utilitaires" type="button">⛏️ Utilitaires</button>
       <button class="filter-btn" data-filter="visuel" type="button">🎨 Visuel</button>
     </div>
+
+    <p class="items-empty is-hidden" id="itemsEmpty">Aucun objet ne correspond à ta recherche.</p>
 
     <div class="items-grid" id="itemsGrid">
 

@@ -33,7 +33,27 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('open');
         navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    // Ferme le menu avec la touche Échap
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.focus();
+      }
+    });
+
+    // Ferme le menu en cliquant en dehors
+    document.addEventListener('click', (e) => {
+      if (!navLinks.classList.contains('open')) return;
+      if (navLinks.contains(e.target) || navToggle.contains(e.target)) return;
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
     });
   }
 
@@ -94,31 +114,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Filtres de catégories (Armes & Objets) ---------- */
+  /* ---------- Filtres de catégories + recherche (Armes & Objets) ---------- */
   const filterBtns = document.querySelectorAll('.filter-btn');
   const itemCards = document.querySelectorAll('.item-card');
+  const itemsSearch = document.getElementById('itemsSearch');
+  const itemsEmpty = document.getElementById('itemsEmpty');
+
+  let activeFilter = 'all';
+
+  const applyItemFilters = () => {
+    const query = itemsSearch ? itemsSearch.value.trim().toLowerCase() : '';
+    let visibleCount = 0;
+
+    itemCards.forEach(card => {
+      const categoryMatch = activeFilter === 'all' || card.dataset.category === activeFilter;
+      const text = (card.querySelector('h3')?.textContent + ' ' + card.querySelector('.item-desc')?.textContent).toLowerCase();
+      const searchMatch = query === '' || text.includes(query);
+      const match = categoryMatch && searchMatch;
+
+      if (match) {
+        visibleCount++;
+        card.classList.remove('is-gone');
+        // force reflow avant de retirer is-hidden pour que la transition joue
+        requestAnimationFrame(() => card.classList.remove('is-hidden'));
+      } else {
+        card.classList.add('is-hidden');
+        window.setTimeout(() => {
+          if (card.classList.contains('is-hidden')) card.classList.add('is-gone');
+        }, 260);
+      }
+    });
+
+    if (itemsEmpty) itemsEmpty.classList.toggle('is-hidden', visibleCount !== 0);
+  };
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const filter = btn.dataset.filter;
-
-      itemCards.forEach(card => {
-        const match = filter === 'all' || card.dataset.category === filter;
-        if (match) {
-          card.classList.remove('is-gone');
-          // force reflow avant de retirer is-hidden pour que la transition joue
-          requestAnimationFrame(() => card.classList.remove('is-hidden'));
-        } else {
-          card.classList.add('is-hidden');
-          window.setTimeout(() => {
-            if (card.classList.contains('is-hidden')) card.classList.add('is-gone');
-          }, 260);
-        }
-      });
+      activeFilter = btn.dataset.filter;
+      applyItemFilters();
     });
   });
+
+  if (itemsSearch) {
+    itemsSearch.addEventListener('input', applyItemFilters);
+  }
 
   /* ---------- Compteurs animés (bandeau stats) ---------- */
   const statNums = document.querySelectorAll('.stat-num');
