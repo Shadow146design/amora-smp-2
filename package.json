@@ -1,0 +1,13 @@
+{
+  "name": "amora-smp2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site du serveur Minecraft Amora SMP 2",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
