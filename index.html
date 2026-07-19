@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amora SMP 2 — Serveur Minecraft</title>
+<meta name="description" content="Amora SMP 2, le serveur Minecraft communautaire : armes, objets, sécurité et aventures. Rejoins le Discord et découvre comment jouer.">
+<meta name="theme-color" content="#0d0f0d">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Amora SMP 2 — Serveur Minecraft">
+<meta property="og:description" content="Armes, sécurité, pièges et aventure sur un serveur survie communautaire. Rejoins le Discord pour jouer.">
+<meta property="og:site_name" content="Amora SMP 2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Amora SMP 2 — Serveur Minecraft">
+<meta name="twitter:description" content="Armes, sécurité, pièges et aventure sur un serveur survie communautaire.">
+
+<!-- Favicon (bloc pixel vert, inline) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%234caf50'/%3E%3Crect x='2' y='2' width='4' height='4' fill='%236ee66f'/%3E%3Crect x='9' y='9' width='5' height='5' fill='%232e7d32'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="pixel-bg"></div>
+
+<!-- NAVBAR -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand"><span class="brand-block"></span>AMORA<span>SMP2</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Accueil</a>
+      <a href="#objets">Armes &amp; Objets</a>
+      <a href="details.html">Détails</a>
+      <a href="details.html#faq">FAQ</a>
+      <a href="https://discord.gg/dm84Gpe8k9" target="_blank" rel="noopener" class="nav-cta">Rejoindre</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero-blocks" aria-hidden="true">
+    <div class="floating-block fb1"></div>
+    <div class="floating-block fb2"></div>
+    <div class="floating-block fb3"></div>
+    <div class="floating-block fb4"></div>
+    <div class="floating-block fb5"></div>
+  </div>
+
+  <div class="container">
+    <span class="eyebrow"><span class="dot"></span> SERVEUR OUVERT</span>
+    <h1>AMORA <span class="hl">SMP 2</span></h1>
+    <p class="subtitle">Un monde survie communautaire avec des armes uniques, des systèmes de sécurité, des pièges redoutables et une aventure sans fin. Rejoins-nous dès aujourd'hui.</p>
+
+    <div class="hero-actions">
+      <a href="https://discord.gg/dm84Gpe8k9" target="_blank" rel="noopener" class="btn btn-primary">▶ JOUER</a>
+      <a href="details.html" class="btn btn-secondary">ℹ DÉTAILS</a>
+    </div>
+
+    <button class="copy-discord" data-copy="https://discord.gg/dm84Gpe8k9" type="button">
+      <span class="ic">📋</span><span class="txt">Copier le lien Discord</span>
+    </button>
+  </div>
+
+  <a href="#objets" class="scroll-hint">
+    DÉCOUVRIR
+    <span class="arrow"></span>
+  </a>
+</section>
+
+<!-- STATS -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stat reveal"><div class="stat-num-wrap"><span class="stat-num" data-target="10">0</span></div><span class="stat-label">Armes</span></div>
+    <div class="stat reveal"><div class="stat-num-wrap"><span class="stat-num" data-target="10">0</span></div><span class="stat-label">Armures</span></div>
+    <div class="stat reveal"><div class="stat-num-wrap"><span class="stat-num" data-target="30">0</span>+</div><span class="stat-label">Pièges</span></div>
+    <div class="stat reveal"><div class="stat-num-wrap"><span class="stat-num" data-target="20">0</span></div><span class="stat-label">Capacités</span></div>
+    <div class="stat reveal"><div class="stat-num-wrap"><span class="stat-num" data-target="11">0</span></div><span class="stat-label">Skins</span></div>
+  </div>
+</section>
+
+<!-- ARMES & OBJETS -->
+<section class="section section-alt" id="objets">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">ÉQUIPEMENT DU SERVEUR</span>
+      <h2>Armes &amp; Objets</h2>
+      <p>Tout l'arsenal et les systèmes disponibles sur Amora SMP 2 — de quoi combattre, te défendre et explorer en style.</p>
+    </div>
+
+    <div class="filter-tabs reveal">
+      <button class="filter-btn active" data-filter="all" type="button">Tous</button>
+      <button class="filter-btn" data-filter="armes" type="button">⚔️ Armes</button>
+      <button class="filter-btn" data-filter="defense" type="button">🔒 Défense</button>
+      <button class="filter-btn" data-filter="utilitaires" type="button">⛏️ Utilitaires</button>
+      <button class="filter-btn" data-filter="visuel" type="button">🎨 Visuel</button>
+    </div>
+
+    <div class="items-grid" id="itemsGrid">
+
+      <!-- 1 -->
+      <article class="item-card reveal" data-category="armes">
+        <div class="item-top">
+          <div class="item-slot">⚔️</div>
+          <div class="item-heading">
+            <h3>Armes + Armures</h3>
+            <div class="item-source">Add-on · DogHouse</div>
+          </div>
+        </div>
+        <p class="item-desc">10 armes inédites et 10 ensembles d'armure surpuissants pour dominer le SMP.</p>
+        <div class="item-meta">
+          <div class="meta-row"><span class="label">Fonctionnement</span><span class="value">Se craftent à l'établi comme un équipement classique, puis s'équipent pour débloquer leurs capacités.</span></div>
+          <div class="meta-row"><span class="label">Capacités</span><span class="value">20 capacités et attaques uniques réparties sur l'ensemble des armes et armures.</span></div>
+          <span class="badge">Craft à l'établi</span>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="item-card reveal" data-category="armes">
+        <div class="item-top">
+          <div class="item-slot">🔫</div>
+          <div class="item-heading">
+            <h3>Ultimate Blasters</h3>
+            <div class="item-source">Add-on · Radium Studio</div>
+          </div>
+        </div>
+        <p class="item-desc">Une gamme d'armes à énergie futuristes qui tirent des projectiles dévastateurs à distance.</p>
+        <div class="item-meta">
+          <div class="meta-row"><span class="label">Fonctionnement</span><span class="value">Se manient comme un arc amélioré : viser, tirer, recharger. Certains modèles ont un tir spécial.</span></div>
+          <div class="meta-row"><span class="label">Dégâts</span><span class="value">Variables selon le modèle, avec effets de zone pour les blasters les plus puissants.</span></div>
+          <span class="badge alt">Boutique du serveur</span>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="item-card reveal" data-category="defense">
+        <div class="item-top">
+          <div class="item-slot">🔒</div>
+          <div class="item-heading">
+            <h3>Spécialistes de la Sécurité</h3>
+            <div class="item-source">Add-on · FingerMaps</div>
+          </div>
+        </div>
+        <p class="item-desc">Un arsenal défensif pour protéger ta base : lasers, coffres-forts et alarmes.</p>
+        <div class="item-meta">
+          <div class="meta-row"><span class="label">Fonctionnement</span><span class="value">Se placent comme des blocs ; ils se déclenchent automatiquement à l'approche d'un intrus.</span></div>
+          <div class="meta-row"><span class="label">Capacités</span><span class="value">Les lasers infligent des dégâts ou déclenchent une alarme selon la configuration choisie.</span></div>
+          <span class="badge">Craft à l'établi</span>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="item-card reveal" data-category="defense">
+        <div class="item-top">
+          <div class="item-slot">📷</div>
+          <div class="item-heading">
+            <h3>Caméras &amp; Surveillance</h3>
+            <div class="item-source">Add-on · Teplight</div>
+          </div>
+        </div>
+        <p class="item-desc">Caméras camouflées, murales et au sol reliées à des moniteurs pour surveiller ton territoire.</p>
+        <div class="item-meta">
+          <div class="meta-row"><span class="label">Fonctionnement</span><span class="value">Place les caméras puis connecte-les à un moniteur pour visionner plusieurs zones en direct.</span></div>
+          <div class="meta-row"><span class="label">Spécial</span><span class="value">Aucun dégât — outil de surveillance et de dissuasion contre le grief.</span></div>
+          <span class="badge">Craft à l'établi</span>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="item-card reveal" data-category="defense">
+        <div class="item-top">
+          <div class="item-slot">🧨</div>
+          <div class="item-heading">
+            <h3>Pièges et Trolls</h3>
+            <div class="item-source">Add-on · SandBlock Studios</div>
+          </div>
+        </div>
+        <p class="item-desc">Plus de 30 pièges ingénieux : blocs explosifs, minerais piégés et vortex pour surprendre tes amis.</p>
+        <div class="item-meta">
+          <div class="meta-row"><span class="label">Fonctionnement</span><span class="value">Cache les pièges dans ta base ou sur le passage des joueurs ; ils s'activent au contact ou à la récolte.</span></div>
+          <div class="meta-row"><span class="label">Effets</span><span class="value">Explosion, téléportation ou ralentissement selon le piège choisi.</span></div>
+          <span class="badge">Craft à l'établi</span>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="item-card reveal" data-category="utilitaires">
+        <div class="item-top">
+          <div class="item-slot">⛏️</div>
+          <div class="item-heading">
+            <h3>Utilitaires du Monde</h3>
+            <div class="item-source">Add-on · Gamefam</div>
+          </div>
+        </div>
+        <p class="item-desc">Des outils avancés comme le Mineur de Veines, le Décapitateur d'Arbres et le Brise-Portail de l'Ender.</p>
+        <div class="item-meta">
+          <div class="meta-row"><span class="label">Fonctionnement</span><span class="value">S'utilisent comme des outils classiques, avec des capacités spéciales activées automatiquement en minant ou en coupant.</span></div>
+          <div class="meta-row"><span class="label">Capacités</span><span class="value">Mineur de Veines : récolte un filon entier d'un coup. Décapitateur : abat un arbre instantanément.</span></div>
+          <span class="badge">Craft à l'établi</span>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="item-card reveal" data-category="utilitaires">
+        <div class="item-top">
+          <div class="item-slot">🚩</div>
+          <div class="item-heading">
+            <h3>Outil de Gestion de Domaine</h3>
+            <div class="item-source">Add-on · Tomhmagic Creations</div>
+          </div>
+        </div>
+        <p class="item-desc">Délimite, protège et gère ton propre territoire sur le serveur.</p>
+        <div class="item-meta">
+          <div class="meta-row"><span class="label">Fonctionnement</span><span class="value">Pose le drapeau de domaine pour définir une zone protégée contre le grief et le vol.</span></div>
+          <div class="meta-row"><span class="label">Spécial</span><span class="value">Aucun dégât — protection anti-grief de ton territoire.</span></div>
+          <span class="badge alt">Offert au spawn</span>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="item-card reveal" data-category="visuel">
+        <div class="item-top">
+          <div class="item-slot">🌤️</div>
+          <div class="item-heading">
+            <h3>Biomes Réalistes</h3>
+            <div class="item-source">Add-on · Oreville Studios</div>
+          </div>
+        </div>
+        <p class="item-desc">Ciels personnalisés, météo dynamique et effets visuels qui transforment l'exploration du monde.</p>
+        <div class="item-meta">
+          <div class="meta-row"><span class="label">Fonctionnement</span><span class="value">Actif automatiquement sur tout le serveur : nuages, pluie, brouillard et lumière changent selon le biome.</span></div>
+          <div class="meta-row"><span class="label">Spécial</span><span class="value">Amélioration purement visuelle et immersive, aucun impact sur le combat.</span></div>
+          <span class="badge alt">Déjà actif</span>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="item-card reveal" data-category="visuel">
+        <div class="item-top">
+          <div class="item-slot">🎨</div>
+          <div class="item-heading">
+            <h3>Prizma Visuals 2.1</h3>
+            <div class="item-source">Pack de textures · Starfish Studios</div>
+          </div>
+        </div>
+        <p class="item-desc">Pack de textures et de skins qui embellit l'ensemble du monde avec des couleurs éclatantes.</p>
+        <div class="item-meta">
+          <div class="meta-row"><span class="label">Fonctionnement</span><span class="value">S'applique automatiquement à la connexion ; inclut 11 skins de joueurs exclusifs.</span></div>
+          <div class="meta-row"><span class="label">Spécial</span><span class="value">Pack visuel « graphismes éclatants », aucun effet sur le gameplay.</span></div>
+          <span class="badge alt">Téléchargement auto</span>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="item-card reveal" data-category="utilitaires">
+        <div class="item-top">
+          <div class="item-slot">🔧</div>
+          <div class="item-heading">
+            <h3>Outils</h3>
+            <div class="item-source">Add-on · Misfits</div>
+          </div>
+        </div>
+        <p class="item-desc">Extension d'outils additionnels pour accélérer la récolte de ressources et l'artisanat.</p>
+        <div class="item-meta">
+          <div class="meta-row"><span class="label">Fonctionnement</span><span class="value">S'équipent comme des outils standards et se craftent à l'établi avec des matériaux améliorés.</span></div>
+          <div class="meta-row"><span class="label">Spécial</span><span class="value">Efficacité de minage et de récolte augmentée selon l'outil.</span></div>
+          <span class="badge">Craft à l'établi</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">PRÊT ?</span>
+      <h2>Rejoins Amora SMP 2 dès maintenant</h2>
+      <p>Rejoins notre Discord pour récupérer l'adresse du serveur et commencer l'aventure.</p>
+    </div>
+    <div class="hero-actions reveal">
+      <a href="https://discord.gg/dm84Gpe8k9" target="_blank" rel="noopener" class="btn btn-primary">▶ JOUER</a>
+      <a href="details.html" class="btn btn-secondary">ℹ DÉTAILS</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand"><span class="brand-block"></span>AMORA<span>SMP2</span></a>
+        <p>Un serveur Minecraft communautaire pensé pour l'aventure, la construction et le combat. Rejoins-nous et écris ton histoire.</p>
+      </div>
+      <div>
+        <h4>NAVIGATION</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="#objets">Armes &amp; Objets</a></li>
+          <li><a href="details.html">Détails</a></li>
+          <li><a href="details.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>SERVEUR</h4>
+        <ul>
+          <li><a href="https://discord.gg/dm84Gpe8k9" target="_blank" rel="noopener">Discord officiel</a></li>
+          <li><a href="details.html#connexion">Adresse &amp; version</a></li>
+          <li><a href="details.html#regles">Règlement</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Amora SMP 2 — Serveur communautaire non affilié à Mojang ou Microsoft.
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Retour en haut de page" type="button">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>
